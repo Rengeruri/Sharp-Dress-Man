@@ -1,7 +1,32 @@
 <amplify-authenticator>
-  <div>
-    SDM App
-    <amplify-sign-out></amplify-sign-out>
-  </div>
-  <!-- previous code -->
+  <amplify-sign-in
+    header-text="Ingresa a Sharp Dress Man"
+    slot="sign-in"
+    [formFields]="formFieldsIn"
+    submit-button-text="Inicia sesión"
+  ></amplify-sign-in>
+
+  <amplify-forgot-password
+    header-text="Olvidé mi constraseña :c"
+    slot="forgot-password"
+    send-button-text="Enviame un código"
+  ></amplify-forgot-password>
+
+  <amplify-sign-up
+    header-text="¿Nuevo en Sharp Dress Man?"
+    slot="sign-up"
+    usernameAlias="username"
+    [formFields]="formFieldsUp"
+    submit-button-text="Registrate"
+  ></amplify-sign-up>
+
+  <amplify-confirm-sign-up
+    header-text="Código de confirmación"
+    slot="confirm-sign-up"
+    [formFields]="formFieldConfirm"
+  ></amplify-confirm-sign-up>
+
+  <amplify-sign-out
+  button-text="Cerrar sesión"
+  ></amplify-sign-out>
 </amplify-authenticator>
