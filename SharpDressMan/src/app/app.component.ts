@@ -7,12 +7,13 @@ import { FormFieldTypes, onAuthUIStateChange, CognitoUserInterface, AuthState } 
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'amplify-angular-auth';
+  title = 'Sharp-Dress-Man';
   user: CognitoUserInterface | undefined;
   authState: AuthState | undefined;
   formFieldsIn: FormFieldTypes;
   formFieldsUp: FormFieldTypes;
   formFieldConfirm: FormFieldTypes;
+  formFieldFortPass: FormFieldTypes;
 
   constructor(private ref: ChangeDetectorRef) {
     this.formFieldsIn = [
@@ -29,13 +30,12 @@ export class AppComponent {
         required: true,
       }
     ];
-
     this.formFieldsUp = [
       {
         type: "username",
-        label: "Nombre de usuario",
+        label: "Nombre de usuario *",
         placeholder: "Ingrese su nombre de usuario",
-        required: true,
+        required: false,
       },
       {
         type: "email",
@@ -50,12 +50,25 @@ export class AppComponent {
         required: true,
       }
     ];
-
     this.formFieldConfirm = [
+      {
+        type: "username",
+        label: "Nombre de usuario *",
+        placeholder: "Confirme su nombre de usuario",
+        required: true,
+      },
       {
         type: "code",
         label: "Código",
-        placeholder: "Ingrese el código",
+        placeholder: "Ingrese el código que le enviamos al correo",
+        required: true,
+      }
+    ];
+    this.formFieldFortPass = [
+      {
+        type: "username",
+        label: "Nombre de usuario *",
+        placeholder: "Ingrese su nombre de usuario",
         required: true,
       }
     ];
