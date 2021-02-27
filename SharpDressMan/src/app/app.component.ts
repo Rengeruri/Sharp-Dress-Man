@@ -13,7 +13,6 @@ export class AppComponent {
   formFieldsIn: FormFieldTypes;
   formFieldsUp: FormFieldTypes;
   formFieldConfirm: FormFieldTypes;
-  formFieldFortPass: FormFieldTypes;
 
   constructor(private ref: ChangeDetectorRef) {
     this.formFieldsIn = [
@@ -61,14 +60,6 @@ export class AppComponent {
         type: "code",
         label: "Código",
         placeholder: "Ingrese el código que le enviamos al correo",
-        required: true,
-      }
-    ];
-    this.formFieldFortPass = [
-      {
-        type: "username",
-        label: "Nombre de usuario *",
-        placeholder: "Ingrese su nombre de usuario",
         required: true,
       }
     ];
