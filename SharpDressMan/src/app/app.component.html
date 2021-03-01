@@ -1,7 +1,16 @@
-<amplify-authenticator>
-  <div>
-    SDM App
-    <amplify-sign-out></amplify-sign-out>
-  </div>
-  <!-- previous code -->
+<amplify-authenticator *ngIf="authState !== 'signedin'">
+    <amplify-sign-in header-text="Ingresa a Sharp Dress Man" slot="sign-in" [formFields]="formFieldsIn" submit-button-text="Inicia sesión"></amplify-sign-in>
+    <amplify-forgot-password header-text="¿Olvidaste la contraseña?" slot="forgot-password" send-button-text="Enviar código"></amplify-forgot-password>
+    <amplify-require-new-password header-text="Cambio de contraseña" slot="require-new-password" submitButtonText="Cambiar"></amplify-require-new-password>
+    <amplify-sign-up header-text="¿Nuevo en Sharp Dress Man?" slot="sign-up" usernameAlias="username" [formFields]="formFieldsUp" submit-button-text="Registrate"></amplify-sign-up>
+    <amplify-confirm-sign-up header-text="Código de confirmación" slot="confirm-sign-up" [formFields]="formFieldConfirm"></amplify-confirm-sign-up>
 </amplify-authenticator>
+
+<div *ngIf="authState === 'signedin' && user" class="App">
+    <amplify-sign-out button-text="Cerrar sesión"></amplify-sign-out>
+    <div>
+        <p>Hola! {{user.username}}</p>
+        <p>{{user.attributes.email}}</p>
+        <p>{{user.attributes.phone_number }}</p>
+    </div>
+</div>
