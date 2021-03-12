@@ -1,6 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormFieldTypes, onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
-import { API } from 'aws-amplify';
 
 @Component({
   selector: 'app-root',
@@ -71,9 +70,6 @@ export class AppComponent {
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
       this.ref.detectChanges();
-    })
-    API.get('sdmApiTest','/demo',{}).then(responde => {
-      console.log(responde);
     })
   }
 
