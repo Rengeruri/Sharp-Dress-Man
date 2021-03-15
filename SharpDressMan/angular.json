@@ -31,9 +31,22 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.css"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/@popperjs/core/dist/umd/popper.min.js",
+                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                            "src/app/main/js/jquery.min.js",
+                            "src/app/main/js/bootstrap.bundle.min.js",
+                            "src/app/main/js/isotope.pkgd.min.js",
+                            "src/app/main/js/animatedModal.js",
+                            "src/app/main/js/owl.carousel.min.js",
+                            "src/app/main/js/simplebar.min.js",
+                            "src/app/main/js/jquery.mb.YTPlayer.min.js",
+                            "src/app/main/js/particles.js"
+                        ]
                     },
                     "configurations": {
                         "production": {

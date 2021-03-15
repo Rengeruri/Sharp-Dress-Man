@@ -7,10 +7,5 @@
 </amplify-authenticator>
 
 <div *ngIf="authState === 'signedin' && user" class="App">
-    <amplify-sign-out button-text="Cerrar sesión"></amplify-sign-out>
-    <div>
-        <p>Hola! {{user.username}}</p>
-        <p>{{user.attributes.email}}</p>
-        <p>{{user.attributes.phone_number }}</p>
-    </div>
+    <app-main [username]="user.username"></app-main>
 </div>
