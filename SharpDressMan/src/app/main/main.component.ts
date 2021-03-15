@@ -29,4 +29,18 @@ export class MainComponent implements OnInit {
     this.userData = await Auth.currentUserInfo();
   }
 
+  ngAfterViewInit(): void {
+    this.loadScript("http://127.0.0.1:8887/main.js");
+  }
+
+  loadScript(url: string) {
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
+  }
+
 }
