@@ -45,9 +45,7 @@
                             "src/app/main/js/owl.carousel.min.js",
                             "src/app/main/js/simplebar.min.js",
                             "src/app/main/js/jquery.mb.YTPlayer.min.js",
-                            "src/app/main/js/particles.js",
-                            "src/app/main/js/main.js",
-                            "src/app/main/js/custom.js"
+                            "src/app/main/js/particles.js"
                         ]
                     },
                     "configurations": {
