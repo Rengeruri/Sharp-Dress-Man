@@ -43,4 +43,9 @@ export class MainComponent implements OnInit {
     body.appendChild(script);
   }
 
+  uploadFile(){
+    var files = (<HTMLInputElement>document.getElementById('archivoASubir')).files;
+    console.log(files); 
+  }
+
 }
