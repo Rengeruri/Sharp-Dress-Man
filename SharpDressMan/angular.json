@@ -35,9 +35,6 @@
                             "src/styles.css"
                         ],
                         "scripts": [
-                            "node_modules/jquery/dist/jquery.min.js",
-                            "node_modules/@popperjs/core/dist/umd/popper.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
                             "src/app/main/js/jquery.min.js",
                             "src/app/main/js/bootstrap.bundle.min.js",
                             "src/app/main/js/isotope.pkgd.min.js",

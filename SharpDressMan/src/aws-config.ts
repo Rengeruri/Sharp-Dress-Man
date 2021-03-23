@@ -18,6 +18,12 @@ const awsConfig = {
           endpoint: "https://afhk19ebyk.execute-api.us-east-1.amazonaws.com/test"
         }
       ]
+    },
+    Storage: {
+      AWSS3: {
+        region: 'us-east-1',
+        bucket: 'sharpdressmand95b3129052c40c582ac6770b4521fa5170224-dev'
+      }
     }
   }
 

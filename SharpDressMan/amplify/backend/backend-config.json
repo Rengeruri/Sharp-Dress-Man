@@ -1,10 +1,16 @@
 {
-    "auth": {
-        "sharpdressmanf4b98845": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        }
+  "auth": {
+    "sharpdressmanf4b98845": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
     }
+  },
+  "storage": {
+    "s3a542d867": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
 }

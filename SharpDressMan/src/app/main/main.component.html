@@ -53,10 +53,9 @@
                 <div class="sidebar-menu">
                     <ul class="list-unstyled list-menu">
                         <li><a class="nav-link" href="#home-area" data-scroll>Inicio</a></li>
-                        <li><a class="nav-link" href="#services-area" data-scroll>Ingresar prenda</a></li>
+                        <li><a class="nav-link" href="#about-area" data-scroll>Ingresar prenda</a></li>
                         <li><a class="nav-link" href="#testimonials-area" data-scroll>Generar conjunto</a></li>
                         <li><a class="nav-link" href="#portfolio-area" data-scroll>Armario virtual</a></li>
-                        <li><a class="nav-link" href="#about-area" data-scroll>Acerca de</a></li>
                         <li><a class="nav-link" href="#contact-area" data-scroll>Mandar correo</a></li>
                         <li>
                             <amplify-sign-out button-text="Cerrar sesión"></amplify-sign-out>
@@ -86,59 +85,34 @@
                     </div>
                 </div>
             </section>
-            <!-- Services-->
-            <section class="single-section alt-bg services-area" id="services-area">
+            <!-- About-->
+            <section class="single-section about-area" id="about-area">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="section-heading">
                                 <h2 class="section-title">Ingresar prenda</h2>
-                                <p class="section-description">En este espacio se puede subir una foto de tu ropa para agregarlo en tu armario virtual.</p>
+                                <p class="section-description">En este espacio se puede subir una foto de tu ropa para ser agregada en tu armario virtual.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- Single service-->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-service"><i class="icon service-icon ion-logo-css3"></i>
-                                <h6 class="service-title">Design Trends</h6>
-                                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div>
-                        </div>
-                        <!-- Single service-->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-service"><i class="icon service-icon ion-md-images"></i>
-                                <h6 class="service-title">PSD Design</h6>
-                                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div>
-                        </div>
-                        <!-- Single service-->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-service"><i class="icon service-icon ion-logo-ionic"></i>
-                                <h6 class="service-title">Customer Support</h6>
-                                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div>
-                        </div>
-                        <!-- Single service-->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-service mb-lg-0"><i class="icon service-icon ion-logo-wordpress"></i>
-                                <!-- <ion-icon name="bug-outline"></ion-icon> -->
-                                <h6 class="service-title">Web Development</h6>
-                                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div>
-                        </div>
-                        <!-- Single service-->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-service mb-md-0"><i class="icon service-icon ion-md-move"></i>
-                                <h6 class="service-title">Fully Responsive</h6>
-                                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div>
-                        </div>
-                        <!-- Single service-->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-service mb-0"><i class="icon service-icon ion-ios-rocket"></i>
-                                <h6 class="service-title">Branding</h6>
-                                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <div class="row align-items-center">
+                        <!-- Picture part-->
+                        <div class="col-12 col-lg-5 about-img"><img class="img-fluid img-thumbnail" src="http://exill.dk/demo/codex/template/img/about-img.jpg" alt="About Picture"></div>
+                        <!-- Content part-->
+                        <div class="col-12 col-lg-7 about-content">
+                            <div class="content-block">
+                                <h2 class="content-subtitle">¿Cómo agrego una prenda a mi armario virtual?</h2>
+                                <h6 class="content-title">Cosas a tener en cuenta.</h6>
+                                <div class="content-description">
+                                    <p>Lo principal es contar con una imagen (.jpg, .png, .jpeg) de la prenda que se desea subir, que aparezca totalmente visible y que cuente con buena iluminacion, como dato adicional, no es necesario que la prenda aparezca
+                                        suelta, tambien puedes estarla usando en la foto.
+                                    </p>
+                                </div>
+                                <div class="content-info">
+                                    <input type="file" multiple id="archivoASubir">
+                                </div>
+                                <button class="btn content-download button-main button-scheme" role="button" (click)="uploadFile()">Agregar imágen</button>
                             </div>
                         </div>
                     </div>
@@ -523,52 +497,6 @@
                                         </li>
                                     </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- About-->
-            <section class="single-section about-area" id="about-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="section-heading">
-                                <h2 class="section-title">Acerca de nosotros</h2>
-                                <p class="section-description">Trabajo terminal TT2020-A053.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <!-- Picture part-->
-                        <div class="col-12 col-lg-5 about-img"><img class="img-fluid img-thumbnail" src="http://exill.dk/demo/codex/template/img/about-img.jpg" alt="About Picture"></div>
-                        <!-- Content part-->
-                        <div class="col-12 col-lg-7 about-content">
-                            <div class="content-block">
-                                <h2 class="content-subtitle">Who am i?</h2>
-                                <h6 class="content-title">I'm Alex Smith, a visual UX/UI Designer and Web Developer</h6>
-                                <div class="content-description">
-                                    <p>I am a freelancer based in the United Kingdom and i have been building noteworthy UX/UI designs and websites for years, which comply with the latest design trends. I help convert a vision and an idea into meaningful
-                                        and useful products. Having a sharp eye for product evolution helps me prioritize tasks, iterate fast and deliver faster.</p>
-                                </div>
-                                <address class="content-info">
-                            <div class="row">
-                              <div class="col-12 col-md-6 single-info"><span>Name:</span>
-                                <p>Alex Smith</p>
-                              </div>
-                              <div class="col-12 col-md-6 single-info"><span>Email:</span>
-                                <p><a href="mailto:daniel@example.com">alex@example.com</a></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-12 col-md-6 single-info"><span>Age:</span>
-                                <p>21</p>
-                              </div>
-                              <div class="col-12 col-md-6 single-info"><span>From:</span>
-                                <p>Liverpool, UK</p>
-                              </div>
-                            </div>
-                          </address><a class="btn content-download button-main button-scheme" href="#0" role="button">Download CV</a><a class="btn content-work button-main" data-scroll="" href="#portfolio-area" role="button">My Work</a>
                             </div>
                         </div>
                     </div>
