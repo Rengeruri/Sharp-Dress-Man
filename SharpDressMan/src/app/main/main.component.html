@@ -112,6 +112,7 @@
                                 <div class="content-info">
                                     <input type="file" multiple id="archivoASubir">
                                 </div>
+                                <simple-notifications></simple-notifications>
                                 <button class="btn content-download button-main button-scheme" role="button" (click)="uploadFile()">Agregar imágen</button>
                             </div>
                         </div>
@@ -125,9 +126,13 @@
                         <div class="col-12">
                             <div class="section-heading">
                                 <h2 class="section-title">Generar conjunto</h2>
-                                <p class="section-description">En este espacio se generaran los conjuntos de ropa mediante la descripción del evento al que asistirás.</p>
+                                <p class="section-description">A continuación Ingrese un texto descriptivo del evento al que asistirá.</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-12 form-group form-message"><textarea class="form-control" id="textData" name="textdata" placeholder="Escribe tu evento aquí." rows="5" required=""></textarea></div>
+                        <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" (click)="uploadText()">Enviar texto</button></div>
                     </div>
                     <div class="owl-carousel owl-theme">
                         <!-- Single review-->
@@ -167,11 +172,9 @@
             <section class="single-section element-cover-bg hire-area" id="hire-area" style="background-image:url(http://exill.dk/demo/codex/template/img/hire.jpg)">
                 <div class="container">
                     <div class="row row-custom">
-                        <div class="col-12 col-md-8 content-part">
-                            <h1 class="hire-title">Let's work together!</h1>
-                            <p class="hire-description">I am available for freelance projects. Hire me and get your project done.</p>
+                        <div class="col-12 col-md-10 content-part" style="text-align: center;">
+                            <h2 class="hire-title">"A pesar de que la elegancia y el estilo acostumbran a ser innatos, se puede aprender y sobre todo mejorar."</h2>
                         </div>
-                        <div class="col-12 col-md-4 button-part"><a class="btn hire-btn button-main button-scheme" data-scroll="" href="#contact-area" role="button">Hire me</a></div>
                     </div>
                 </div>
             </section>
