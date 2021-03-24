@@ -51,17 +51,21 @@ export class MainComponent implements OnInit {
 
   async uploadFile() {
     let files = (<HTMLInputElement>document.getElementById('archivoASubir')).files;
-    for (var i = 0; i < files.length; i++) {
-      try {
-        let key = this.userData.id +"/"+files[i].name;
-        await Storage.put(key, files[i], {
-          // contentType: 'image/png' // contentType is optional
-        });
-        this.service.success("Carga completa", "Imagen subida con éxito", this.costumNotifi);
-      } catch (err) {
-        console.log('Error uploading file: ', err);
-        this.service.error("Hubo un error", err, this.costumNotifi);
-      }  
+    if(files.length > 0) {
+      for (var i = 0; i < files.length; i++) {
+        try {
+          let key = this.userData.id +"/"+files[i].name;
+          await Storage.put(key, files[i], {
+            // contentType: 'image/png' // contentType is optional
+          });
+          this.service.success("Carga completa", "Imagen subida con éxito", this.costumNotifi);
+        } catch (err) {
+          console.log('Error uploading file: ', err);
+          this.service.error("Hubo un error", err, this.costumNotifi);
+        }  
+      }
+    } else {
+      this.service.error("Hubo un error", "Falta ingresar una imagen", this.costumNotifi);
     }
   }
 
