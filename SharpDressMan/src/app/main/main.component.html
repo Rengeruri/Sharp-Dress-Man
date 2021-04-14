@@ -40,12 +40,12 @@
     <div class="main-wrapper">
         <!-- Sidebar-->
         <header>
-            <nav class="navbar d-md-block d-lg-none fixed-top mobile-navbar"><button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="nav-btn">Menu</span></button>
+            <nav class="navbar d-md-block d-lg-none fixed-top mobile-navbar" aria-label=""><button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="nav-btn">Menu</span></button>
                 <div class="collapse navbar-collapse order-1" id="mobileNavbarSupportedContent">
                     <ul class="navbar-nav mr-auto"></ul>
                 </div>
             </nav>
-            <nav class="sidebar" data-simplebar>
+            <nav class="sidebar" data-simplebar aria-label="">
                 <div class="sidebar-header">
                     <a href="#home" data-scroll><img class="img-fluid sidebar-avatar" src="https://i.imgur.com/YE3fyXu.png" alt="Profile avatar"></a><span class="sidebar-name">{{username}}</span>
                     <p class="sidebar-status">Experto en moda</p>
@@ -126,7 +126,7 @@
                         <div class="col-12">
                             <div class="section-heading">
                                 <h2 class="section-title">Generar conjunto</h2>
-                                <p class="section-description">A continuación Ingrese un texto descriptivo del evento al que asistirá.</p>
+                                <p class="section-description">A continuación ingrese un texto descriptivo del evento al que asistirá.</p>
                             </div>
                         </div>
                     </div>
@@ -136,34 +136,9 @@
                     </div>
                     <div class="owl-carousel owl-theme">
                         <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-1.jpg" alt="Review avatar">
-                            <span class="client-name">Maria Wilson</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-2.jpg" alt="Review avatar">
-                            <span class="client-name">John Santana</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-3.jpg" alt="Review avatar">
-                            <span class="client-name">Julia Sakura</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-1.jpg" alt="Review avatar">
-                            <span class="client-name">Maria Wilson</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-2.jpg" alt="Review avatar">
-                            <span class="client-name">John Santana</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-3.jpg" alt="Review avatar">
-                            <span class="client-name">Julia Sakura</span>
+                        <div class="single-review" *ngFor="let item of eventsExamples"><em class="icon ion-md-quote review-icon"></em>
+                            <p class="review-content">{{item.text}}</p><img class="client-avatar" src="{{item.urlAvatar}}" alt="Review avatar">
+                            <span class="client-name">{{item.name}}</span>
                         </div>
                     </div>
                 </div>
@@ -539,26 +514,26 @@
                 <div class="container">
                     <div class="row contact-info">
                         <div class="col-12 col-sm-4">
-                            <div class="single-info"><i class="info-icon icon ion-md-map"></i>
+                            <div class="single-info"><em class="info-icon icon ion-md-map"></em>
                                 <p class="info-content"><a href="https://goo.gl/maps/LHxFDcVQACZZ4UXn9" target="_blank">IPN, Escuela Superior de Cómputo, México.</a></p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
-                            <div class="single-info"><i class="info-icon icon ion-md-call"></i>
+                            <div class="single-info"><em class="info-icon icon ion-md-call"></em>
                                 <p class="info-content"><a href="tel:+525532404630">+52 5532 404630</a></p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
-                            <div class="single-info"><i class="info-icon icon ion-md-send"></i>
+                            <div class="single-info"><em class="info-icon icon ion-md-send"></em>
                                 <p class="info-content"><a href="mailto:Sharp-Dressman@hotmail.com">Sharp-Dressman@hotmail.com</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="row mini-footer">
                         <div class="social-medias col-12 col-lg-5">
-                            <a class="linkedin" href="https://www.linkedin.com/in/irving-missael-bautista-neyra-4270431a3/"><i class="icon ion-logo-linkedin"></i></a>
-                            <a class="linkedin" href="https://www.linkedin.com/in/carlos-uriel-villegas-hernandez-54988290/"><i class="icon ion-logo-linkedin"></i></a>
-                            <a class="github" href="https://github.com/Rengeruri/Sharp-Dress-Man"><i class="icon ion-logo-github"></i></a>
+                            <a class="linkedin" href="https://www.linkedin.com/in/irving-missael-bautista-neyra-4270431a3/"><em class="icon ion-logo-linkedin"></em></a>
+                            <a class="linkedin" href="https://www.linkedin.com/in/carlos-uriel-villegas-hernandez-54988290/"><em class="icon ion-logo-linkedin"></em></a>
+                            <a class="github" href="https://github.com/Rengeruri/Sharp-Dress-Man"><em class="icon ion-logo-github"></em></a>
                         </div>
                         <p class="copyright-notice col-12 col-lg-7">Copyright © 2021 SDM, all rights reserved. Developed by <a href="https://www.facebook.com/Catt.ESCOM.Oficial" target="_blank">TT2020-A053</a>.</p>
                     </div>
