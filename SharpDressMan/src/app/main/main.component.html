@@ -110,7 +110,7 @@
                                     </p>
                                 </div>
                                 <div class="content-info">
-                                    <input type="file" multiple id="archivoASubir">
+                                    <input type="file" multiple id="archivoASubir" (change)="handleUpload($event)">
                                 </div>
                                 <simple-notifications></simple-notifications>
                                 <button class="btn content-download button-main button-scheme" role="button" (click)="uploadFile()">Agregar imágen</button>

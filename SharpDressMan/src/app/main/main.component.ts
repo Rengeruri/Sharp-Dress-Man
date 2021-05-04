@@ -20,6 +20,7 @@ import { API, Auth, Storage } from 'aws-amplify';
 export class MainComponent implements OnInit {
   @Input() username: string | undefined;
   public userData;
+  public eventFiles = null;
   public costumNotifi = {
     timeOut: 3000,
     showProgressBar: true,
@@ -56,16 +57,29 @@ export class MainComponent implements OnInit {
     body.appendChild(script);
   }
 
+  handleUpload(event) {
+    this.eventFiles = event.target.files;
+  }
+
   async uploadFile() {
-    let files = (<HTMLInputElement>document.getElementById('archivoASubir')).files;
+    let files = (<HTMLInputElement>document.getElementById('archivoASubir')).files; 
     if(files.length > 0) {
       for (var i = 0; i < files.length; i++) {
         try {
           let key = this.userData.id +"/"+files[i].name;
-          await Storage.put(key, files[i], {
-            // contentType: 'image/png' // contentType is optional
-          });
-          this.service.success("Carga completa", "Imagen subida con éxito", this.costumNotifi);
+          // await Storage.put(key, files[i], {
+          //   // contentType: 'image/png' // contentType is optional
+          // });
+          const reader = new FileReader();
+          reader.readAsDataURL(this.eventFiles[i]);
+          reader.onload = () => {
+            API.post('sdmApiTest', '/image', {
+              body: reader.result
+            }).then(responde => {
+              console.log(responde);
+            });
+          };
+          this.service.success("Carga completa", "Imagen " + (i+1).toString() + " subida con éxito", this.costumNotifi);
         } catch (err) {
           console.log('Error uploading file: ', err);
           this.service.error("Hubo un error", err, this.costumNotifi);
