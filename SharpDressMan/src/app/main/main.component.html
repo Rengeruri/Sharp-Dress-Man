@@ -40,12 +40,12 @@
     <div class="main-wrapper">
         <!-- Sidebar-->
         <header>
-            <nav class="navbar d-md-block d-lg-none fixed-top mobile-navbar"><button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="nav-btn">Menu</span></button>
+            <nav class="navbar d-md-block d-lg-none fixed-top mobile-navbar" aria-label=""><button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="nav-btn">Menu</span></button>
                 <div class="collapse navbar-collapse order-1" id="mobileNavbarSupportedContent">
                     <ul class="navbar-nav mr-auto"></ul>
                 </div>
             </nav>
-            <nav class="sidebar" data-simplebar>
+            <nav class="sidebar" data-simplebar aria-label="">
                 <div class="sidebar-header">
                     <a href="#home" data-scroll><img class="img-fluid sidebar-avatar" src="https://i.imgur.com/YE3fyXu.png" alt="Profile avatar"></a><span class="sidebar-name">{{username}}</span>
                     <p class="sidebar-status">Experto en moda</p>
@@ -66,7 +66,7 @@
         </header>
         <div class="sections-wrapper">
             <!-- Sections-->
-            <!-- Home-->
+            <!-- Inicio-->
             <section class="home-area element-cover-bg galaxy-variant" id="home-area" style="background-image:url(http://exill.dk/demo/codex/template/img/home.jpg)">
                 <div id="particles-js"></div>
                 <div class="container h-100">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </section>
-            <!-- About-->
+            <!-- Ingresar Prenda-->
             <section class="single-section about-area" id="about-area">
                 <div class="container">
                     <div class="row">
@@ -110,72 +110,51 @@
                                     </p>
                                 </div>
                                 <div class="content-info">
-                                    <input type="file" multiple id="archivoASubir">
+                                    <input type="file" multiple id="archivoASubir" (change)="handleUpload($event)">
                                 </div>
+                                <simple-notifications></simple-notifications>
                                 <button class="btn content-download button-main button-scheme" role="button" (click)="uploadFile()">Agregar imágen</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Testimonials-->
+            <!-- Generar Conjunto-->
             <section class="single-section testimonials-area alt-bg" id="testimonials-area">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="section-heading">
                                 <h2 class="section-title">Generar conjunto</h2>
-                                <p class="section-description">En este espacio se generaran los conjuntos de ropa mediante la descripción del evento al que asistirás.</p>
+                                <p class="section-description">A continuación ingrese un texto descriptivo del evento al que asistirá.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="container">
+                        <div class="col-12 form-group form-message"><textarea class="form-control" id="textData" name="textdata" placeholder="Escribe tu evento aquí." rows="5" required=""></textarea></div>
+                        <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" (click)="uploadText()">Enviar texto</button></div>
+                    </div>
+                    <br>
                     <div class="owl-carousel owl-theme">
                         <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-1.jpg" alt="Review avatar">
-                            <span class="client-name">Maria Wilson</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-2.jpg" alt="Review avatar">
-                            <span class="client-name">John Santana</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-3.jpg" alt="Review avatar">
-                            <span class="client-name">Julia Sakura</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-1.jpg" alt="Review avatar">
-                            <span class="client-name">Maria Wilson</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-2.jpg" alt="Review avatar">
-                            <span class="client-name">John Santana</span>
-                        </div>
-                        <!-- Single review-->
-                        <div class="single-review"><i class="icon ion-md-quote review-icon"></i>
-                            <p class="review-content">Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.</p><img class="client-avatar" src="http://exill.dk/demo/codex/template/img/client-3.jpg" alt="Review avatar">
-                            <span class="client-name">Julia Sakura</span>
+                        <div class="single-review" *ngFor="let item of eventsExamples"><em class="icon ion-md-quote review-icon"></em>
+                            <p class="review-content">{{item.text}}</p><img class="client-avatar" src="{{item.urlAvatar}}" alt="Review avatar">
+                            <span class="client-name">{{item.name}}</span>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Hire-->
+            <!-- Frase-->
             <section class="single-section element-cover-bg hire-area" id="hire-area" style="background-image:url(http://exill.dk/demo/codex/template/img/hire.jpg)">
                 <div class="container">
                     <div class="row row-custom">
-                        <div class="col-12 col-md-8 content-part">
-                            <h1 class="hire-title">Let's work together!</h1>
-                            <p class="hire-description">I am available for freelance projects. Hire me and get your project done.</p>
+                        <div class="col-12 col-md-10 content-part" style="text-align: center;">
+                            <h2 class="hire-title">"A pesar de que la elegancia y el estilo acostumbran a ser innatos, se puede aprender y sobre todo mejorar."</h2>
                         </div>
-                        <div class="col-12 col-md-4 button-part"><a class="btn hire-btn button-main button-scheme" data-scroll="" href="#contact-area" role="button">Hire me</a></div>
                     </div>
                 </div>
             </section>
-            <!-- Portfolio-->
+            <!-- Armario Virtual-->
             <section class="single-section portfolio-area" id="portfolio-area">
                 <div class="container">
                     <div class="row">
@@ -200,61 +179,11 @@
                     <!-- Thumbnail list-->
                     <div class="portfolio-grid row">
                         <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 design">
-                            <a class="portfolio-item" href="#item-1">
-                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg">
+                        <div *ngFor="let item of virtualCloset" class="single-item col-6 col-lg-4 {{item.filter}}">
+                            <a class="portfolio-item" href="{{item.href}}">
+                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="{{item.urlImage}}">
                                     <div class="item-content">
-                                        <h6 class="content-title">Label Tag Mockup</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 photos">
-                            <a class="portfolio-item" href="#item-2">
-                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">3D Bag Mockup</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 design">
-                            <a class="portfolio-item" href="#item-3">
-                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">Modern Bag Design</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 brand">
-                            <a class="portfolio-item" href="#item-4">
-                                <div class="portfolio-wrapper mb-lg-0"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">Coffee Cup Design</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 brand">
-                            <a class="portfolio-item" href="#item-5">
-                                <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">T-Shirt Design</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 photos">
-                            <a class="portfolio-item" href="#item-6">
-                                <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">Packaging Box Mockup</h6><span class="content-more">Más información</span>
+                                        <h6 class="content-title">{{item.title}}</h6><span class="content-more">Más información</span>
                                     </div>
                                 </div>
                             </a>
@@ -262,7 +191,7 @@
                     </div>
                 </div>
                 <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-1">
+                <div *ngFor="let item of virtualCloset" class="lightbox-wrapper" id="{{item.id}}">
                     <div class="f-basis-100">
                         <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
                         </div>
@@ -270,239 +199,39 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Label Tag Mockup</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
+                                <div class="lightbox-gallery owl-carousel owl-theme">
+                                    <img class="img-fluid item-img" alt="Item" src="{{item.urlImage}}">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-2">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
                             <div class="col-12 col-lg-7">
                                 <div class="lightbox-content">
-                                    <h3 class="content-title">3D Bag Mockup</h3>
+                                    <h3 class="content-title">{{item.title}}</h3>
                                     <div class="content-description">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
                                             consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
                                     </div>
                                     <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
+                                        <li class="list-inline-item single-info"><span>Formalidad:</span>
                                             <p>Envato</p>
                                         </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
+                                        <li class="list-inline-item single-info"><span>Ropa:</span>
+                                            <p>Web Design</p>
                                         </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
+                                        <li class="list-inline-item single-info"><span>Color:</span>
                                             <p>12 May, 2019</p>
                                         </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
+                                        <li class="list-inline-item single-info"><span>Categoría:</span>
                                             <p>HTML5, SCSS, JS</p>
                                         </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-3">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Modern Bag Design</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-4">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Coffee Cup Design</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-5">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">T-Shirt Design</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-6">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Packaging Box Mockup</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
+                                    </ul><button class="btn content-btn button-main button-scheme" href="#0" role="button">Borrar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Contact-->
+            <!-- Correo-->
             <section class="single-section contact-area alt-bg" id="contact-area">
                 <div class="container">
                     <div class="row">
@@ -531,31 +260,31 @@
                     </div>
                 </div>
             </section>
-            <!-- Footer-->
+            <!-- PieDePagina-->
             <footer class="footer-area single-section">
                 <div class="container">
                     <div class="row contact-info">
                         <div class="col-12 col-sm-4">
-                            <div class="single-info"><i class="info-icon icon ion-md-map"></i>
+                            <div class="single-info"><em class="info-icon icon ion-md-map"></em>
                                 <p class="info-content"><a href="https://goo.gl/maps/LHxFDcVQACZZ4UXn9" target="_blank">IPN, Escuela Superior de Cómputo, México.</a></p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
-                            <div class="single-info"><i class="info-icon icon ion-md-call"></i>
+                            <div class="single-info"><em class="info-icon icon ion-md-call"></em>
                                 <p class="info-content"><a href="tel:+525532404630">+52 5532 404630</a></p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
-                            <div class="single-info"><i class="info-icon icon ion-md-send"></i>
+                            <div class="single-info"><em class="info-icon icon ion-md-send"></em>
                                 <p class="info-content"><a href="mailto:Sharp-Dressman@hotmail.com">Sharp-Dressman@hotmail.com</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="row mini-footer">
                         <div class="social-medias col-12 col-lg-5">
-                            <a class="linkedin" href="https://www.linkedin.com/in/irving-missael-bautista-neyra-4270431a3/"><i class="icon ion-logo-linkedin"></i></a>
-                            <a class="linkedin" href="https://www.linkedin.com/in/carlos-uriel-villegas-hernandez-54988290/"><i class="icon ion-logo-linkedin"></i></a>
-                            <a class="github" href="https://github.com/Rengeruri/Sharp-Dress-Man"><i class="icon ion-logo-github"></i></a>
+                            <a class="linkedin" href="https://www.linkedin.com/in/irving-missael-bautista-neyra-4270431a3/"><em class="icon ion-logo-linkedin"></em></a>
+                            <a class="linkedin" href="https://www.linkedin.com/in/carlos-uriel-villegas-hernandez-54988290/"><em class="icon ion-logo-linkedin"></em></a>
+                            <a class="github" href="https://github.com/Rengeruri/Sharp-Dress-Man"><em class="icon ion-logo-github"></em></a>
                         </div>
                         <p class="copyright-notice col-12 col-lg-7">Copyright © 2021 SDM, all rights reserved. Developed by <a href="https://www.facebook.com/Catt.ESCOM.Oficial" target="_blank">TT2020-A053</a>.</p>
                     </div>
