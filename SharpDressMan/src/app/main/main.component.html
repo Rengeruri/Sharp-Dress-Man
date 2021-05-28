@@ -66,7 +66,7 @@
         </header>
         <div class="sections-wrapper">
             <!-- Sections-->
-            <!-- Home-->
+            <!-- Inicio-->
             <section class="home-area element-cover-bg galaxy-variant" id="home-area" style="background-image:url(http://exill.dk/demo/codex/template/img/home.jpg)">
                 <div id="particles-js"></div>
                 <div class="container h-100">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </section>
-            <!-- About-->
+            <!-- Ingresar Prenda-->
             <section class="single-section about-area" id="about-area">
                 <div class="container">
                     <div class="row">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </section>
-            <!-- Testimonials-->
+            <!-- Generar Conjunto-->
             <section class="single-section testimonials-area alt-bg" id="testimonials-area">
                 <div class="container">
                     <div class="row">
@@ -144,7 +144,7 @@
                     </div>
                 </div>
             </section>
-            <!-- Hire-->
+            <!-- Frase-->
             <section class="single-section element-cover-bg hire-area" id="hire-area" style="background-image:url(http://exill.dk/demo/codex/template/img/hire.jpg)">
                 <div class="container">
                     <div class="row row-custom">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </section>
-            <!-- Portfolio-->
+            <!-- Armario Virtual-->
             <section class="single-section portfolio-area" id="portfolio-area">
                 <div class="container">
                     <div class="row">
@@ -179,61 +179,11 @@
                     <!-- Thumbnail list-->
                     <div class="portfolio-grid row">
                         <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 design">
-                            <a class="portfolio-item" href="#item-1">
-                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg">
+                        <div *ngFor="let item of virtualCloset" class="single-item col-6 col-lg-4 {{item.filter}}">
+                            <a class="portfolio-item" href="{{item.href}}">
+                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="{{item.urlImage}}">
                                     <div class="item-content">
-                                        <h6 class="content-title">Label Tag Mockup</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 photos">
-                            <a class="portfolio-item" href="#item-2">
-                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">3D Bag Mockup</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 design">
-                            <a class="portfolio-item" href="#item-3">
-                                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">Modern Bag Design</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 brand">
-                            <a class="portfolio-item" href="#item-4">
-                                <div class="portfolio-wrapper mb-lg-0"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">Coffee Cup Design</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 brand">
-                            <a class="portfolio-item" href="#item-5">
-                                <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">T-Shirt Design</h6><span class="content-more">Más información</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single item-->
-                        <div class="single-item col-6 col-lg-4 photos">
-                            <a class="portfolio-item" href="#item-6">
-                                <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg">
-                                    <div class="item-content">
-                                        <h6 class="content-title">Packaging Box Mockup</h6><span class="content-more">Más información</span>
+                                        <h6 class="content-title">{{item.title}}</h6><span class="content-more">Más información</span>
                                     </div>
                                 </div>
                             </a>
@@ -241,7 +191,7 @@
                     </div>
                 </div>
                 <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-1">
+                <div *ngFor="let item of virtualCloset" class="lightbox-wrapper" id="{{item.id}}">
                     <div class="f-basis-100">
                         <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
                         </div>
@@ -249,239 +199,39 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Label Tag Mockup</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
+                                <div class="lightbox-gallery owl-carousel owl-theme">
+                                    <img class="img-fluid item-img" alt="Item" src="{{item.urlImage}}">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-2">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
                             <div class="col-12 col-lg-7">
                                 <div class="lightbox-content">
-                                    <h3 class="content-title">3D Bag Mockup</h3>
+                                    <h3 class="content-title">{{item.title}}</h3>
                                     <div class="content-description">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
                                             consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
                                     </div>
                                     <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
+                                        <li class="list-inline-item single-info"><span>Formalidad:</span>
                                             <p>Envato</p>
                                         </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
+                                        <li class="list-inline-item single-info"><span>Ropa:</span>
+                                            <p>Web Design</p>
                                         </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
+                                        <li class="list-inline-item single-info"><span>Color:</span>
                                             <p>12 May, 2019</p>
                                         </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
+                                        <li class="list-inline-item single-info"><span>Categoría:</span>
                                             <p>HTML5, SCSS, JS</p>
                                         </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-3">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Modern Bag Design</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-4">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Coffee Cup Design</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-5">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">T-Shirt Design</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single lightbox-->
-                <div class="lightbox-wrapper" id="item-6">
-                    <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-6.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-1.jpg"><img class="img-fluid item-img"
-                                        alt="Item" src="http://exill.dk/demo/codex/template/img/item-2.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-3.jpg"><img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-4.jpg">
-                                    <img class="img-fluid item-img" alt="Item" src="http://exill.dk/demo/codex/template/img/item-5.jpg"></div>
-                            </div>
-                            <div class="col-12 col-lg-7">
-                                <div class="lightbox-content">
-                                    <h3 class="content-title">Packaging Box Mockup</h3>
-                                    <div class="content-description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut sapiente quo explicabo, quasi incidunt aperiam laudantium, nemo cum eaque inventore ut voluptas voluptatibus nihil! Amet soluta, ea illo sint?</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dignissimos culpa deserunt aspernatur ipsa veritatis alias labore tempore laboriosam commodi! Ab neque sunt, odio voluptatibus, dignissimos nisi
-                                            consequuntur atque qui explicabo eligendi, harum in? Amet aspernatur atque quam. Illo natus tempora explicabo deleniti molestias numquam debitis repudiandae, repellendus voluptatum soluta?</p>
-                                    </div>
-                                    <ul class="list-inline content-info">
-                                        <li class="list-inline-item single-info"><span>Client:</span>
-                                            <p>Envato</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Categories:</span>
-                                            <p><a href="#0">Branding</a>, <a href="#0">Web Design</a></p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Date:</span>
-                                            <p>12 May, 2019</p>
-                                        </li>
-                                        <li class="list-inline-item single-info"><span>Technologies:</span>
-                                            <p>HTML5, SCSS, JS</p>
-                                        </li>
-                                    </ul><a class="btn content-btn button-main button-scheme" href="#0" role="button">Visit Project</a>
+                                    </ul><button class="btn content-btn button-main button-scheme" href="#0" role="button">Borrar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Contact-->
+            <!-- Correo-->
             <section class="single-section contact-area alt-bg" id="contact-area">
                 <div class="container">
                     <div class="row">
@@ -510,7 +260,7 @@
                     </div>
                 </div>
             </section>
-            <!-- Footer-->
+            <!-- PieDePagina-->
             <footer class="footer-area single-section">
                 <div class="container">
                     <div class="row contact-info">
