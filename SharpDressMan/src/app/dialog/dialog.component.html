@@ -1,44 +1,47 @@
-<div *ngIf="data.evento !== 'False'; else NE">
-    <h2>Conjunto</h2>
-    <p>Sugerencia de conjunto generado para {{data.evento}}</p>
-<div *ngIf="data.body !== undefined">
-    <div *ngIf="data.body[0].length > 0; else SS">
-        <div *ngFor="let item of data.body[0]">
-            <p>{{item.nombre}}</p>
-            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+<h2>Conjuntos de ropa</h2>
+<mat-dialog-content>
+    <div *ngIf="data.evento !== 'False'; else NE">
+        <p>Sugerencia de conjunto generado para {{data.evento}}</p>
+    <div *ngIf="data.body !== undefined">
+        <h3>Prenda superior externa</h3>
+        <div *ngIf="data.body[0].length > 0; else SS">
+            <div *ngFor="let item of data.body[0]">
+                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+            </div>
         </div>
+        <ng-template #SS>No hay prendas superiores externas</ng-template>
     </div>
-    <ng-template #SS>No hay prenda jiji</ng-template>
-</div>
-<div *ngIf="data.body !== undefined">
-    <div *ngIf="data.body[1].length > 0; else S">
-        <div *ngFor="let item of data.body[1]">
-            <p>{{item.nombre}}</p>
-            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+    <div *ngIf="data.body !== undefined">
+        <h3>Prenda superior</h3>
+        <div *ngIf="data.body[1].length > 0; else S">
+            <div *ngFor="let item of data.body[1]">
+                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+            </div>
         </div>
+        <ng-template #S>No hay prendas superiores</ng-template>
     </div>
-    <ng-template #S>No hay prenda jiji</ng-template>
-</div>
-<div *ngIf="data.body !== undefined">
-    <div *ngIf="data.body[2].length > 0; else I">
-        <div *ngFor="let item of data.body[2]">
-            <p>{{item.nombre}}</p>
-            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+    <div *ngIf="data.body !== undefined">
+        <h3>Prenda inferior</h3>
+        <div *ngIf="data.body[2].length > 0; else I">
+            <div *ngFor="let item of data.body[2]">
+                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+            </div>
         </div>
+        <ng-template #I>No hay prendas inferiores</ng-template>
     </div>
-    <ng-template #I>No hay prenda jiji</ng-template>
-</div>
-<div *ngIf="data.body !== undefined">
-    <div *ngIf="data.body[3].length > 0; else C">
-        <div *ngFor="let item of data.body[3]">
-            <p>{{item.nombre}}</p>
-            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+    <div *ngIf="data.body !== undefined">
+        <h3>Calzado</h3>
+        <div *ngIf="data.body[3].length > 0; else C">
+            <div *ngFor="let item of data.body[3]">
+                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+            </div>
         </div>
+        <ng-template #C>No hay calzado</ng-template>
     </div>
-    <ng-template #C>No hay prenda jiji</ng-template>
-</div>
-</div>
-<ng-template #NE>{{data.body}}</ng-template>
-<div>
+    </div>
+    <ng-template #NE>{{data.body}}</ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
     <button mat-dialog-close class="btn button-main button-scheme">Cerrar</button>
-</div>
+</mat-dialog-actions>
