@@ -1,0 +1,44 @@
+<div *ngIf="data.evento !== 'False'; else NE">
+    <h2>Conjunto</h2>
+    <p>Sugerencia de conjunto generado para {{data.evento}}</p>
+<div *ngIf="data.body !== undefined">
+    <div *ngIf="data.body[0].length > 0; else SS">
+        <div *ngFor="let item of data.body[0]">
+            <p>{{item.nombre}}</p>
+            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+        </div>
+    </div>
+    <ng-template #SS>No hay prenda jiji</ng-template>
+</div>
+<div *ngIf="data.body !== undefined">
+    <div *ngIf="data.body[1].length > 0; else S">
+        <div *ngFor="let item of data.body[1]">
+            <p>{{item.nombre}}</p>
+            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+        </div>
+    </div>
+    <ng-template #S>No hay prenda jiji</ng-template>
+</div>
+<div *ngIf="data.body !== undefined">
+    <div *ngIf="data.body[2].length > 0; else I">
+        <div *ngFor="let item of data.body[2]">
+            <p>{{item.nombre}}</p>
+            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+        </div>
+    </div>
+    <ng-template #I>No hay prenda jiji</ng-template>
+</div>
+<div *ngIf="data.body !== undefined">
+    <div *ngIf="data.body[3].length > 0; else C">
+        <div *ngFor="let item of data.body[3]">
+            <p>{{item.nombre}}</p>
+            <img src="{{S3name + item.idUsuario + '/' + item.imagen}}">
+        </div>
+    </div>
+    <ng-template #C>No hay prenda jiji</ng-template>
+</div>
+</div>
+<ng-template #NE>{{data.body}}</ng-template>
+<div>
+    <button mat-dialog-close class="btn button-main button-scheme">Cerrar</button>
+</div>

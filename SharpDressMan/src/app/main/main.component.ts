@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { API, Auth, Storage } from 'aws-amplify';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-main',
@@ -42,14 +44,17 @@ export class MainComponent implements OnInit {
     {filter:"photos", id:"item-6", href:"#item-6", title:"Packaging Box Mockup", urlImage:"http://exill.dk/demo/codex/template/img/item-6.jpg"}
   ];
 
-  constructor(private service: NotificationsService ) {  }
+  constructor(
+    private service: NotificationsService,
+    public dialog: MatDialog
+     ) {  }
 
   async ngOnInit() {
     this.userData = await Auth.currentUserInfo();  
     API.post('sdmApiTest', '/virtual-closet', {
       body: {userId:this.userData.id}
     }).then(responde => {
-      console.log(responde.body);
+      //console.log(responde.body);
     });
   }
 
@@ -111,7 +116,8 @@ export class MainComponent implements OnInit {
       API.post('sdmApiTest','/text',{
         body: {text:text, userId:this.userData.id}
       }).then(responde => {
-        console.log(responde);
+        //console.log(responde);
+        this.dialog.open(DialogComponent, {data: responde});
       }).catch(error => {
         this.service.error("Hubo un error", error, this.costumNotifi);
       });
