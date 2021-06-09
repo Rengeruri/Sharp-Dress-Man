@@ -1,43 +1,35 @@
-<h2>Conjuntos de ropa</h2>
+<h1>Conjuntos de ropa</h1>
 <mat-dialog-content>
     <div *ngIf="data.evento !== 'False'; else NE">
-        <p>Sugerencia de conjunto generado para {{data.evento}}</p>
-    <div *ngIf="data.body !== undefined">
-        <h3>Prenda superior externa</h3>
-        <div *ngIf="data.body[0].length > 0; else SS">
-            <div *ngFor="let item of data.body[0]">
-                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+        <h2>Sugerencia de conjunto generado para {{data.evento}}</h2>
+        <div *ngIf="data.body !== undefined">
+            <h3><b>Prenda superior externa - Tienes {{data.body[0].length}} recomendación(es)</b></h3>
+            <div *ngIf="data.body[0].length > 0; else SS">
+                <carousel [images]="imagesSS" [height]="300" [width]="200"></carousel><br>
             </div>
+            <ng-template #SS><h4>No hay prendas superiores externas</h4><br></ng-template>
         </div>
-        <ng-template #SS>No hay prendas superiores externas</ng-template>
-    </div>
-    <div *ngIf="data.body !== undefined">
-        <h3>Prenda superior</h3>
-        <div *ngIf="data.body[1].length > 0; else S">
-            <div *ngFor="let item of data.body[1]">
-                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+        <div *ngIf="data.body !== undefined">
+            <h3><b>Prenda superior - Tienes {{data.body[1].length}} recomendación(es)</b></h3>
+            <div *ngIf="data.body[1].length > 0; else S">
+                <carousel [images]="imagesS" [height]="300" [width]="200"></carousel><br>
             </div>
+            <ng-template #S><h4>No hay prendas superiores</h4><br></ng-template>
         </div>
-        <ng-template #S>No hay prendas superiores</ng-template>
-    </div>
-    <div *ngIf="data.body !== undefined">
-        <h3>Prenda inferior</h3>
-        <div *ngIf="data.body[2].length > 0; else I">
-            <div *ngFor="let item of data.body[2]">
-                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+        <div *ngIf="data.body !== undefined">
+            <h3><b>Prenda inferior - Tienes {{data.body[2].length}} recomendación(es)</b></h3>
+            <div *ngIf="data.body[2].length > 0; else I">
+                <carousel [images]="imagesI" [height]="300" [width]="200"></carousel><br>
             </div>
+            <ng-template #I><h4>No hay prendas inferiores</h4><br></ng-template>
         </div>
-        <ng-template #I>No hay prendas inferiores</ng-template>
-    </div>
-    <div *ngIf="data.body !== undefined">
-        <h3>Calzado</h3>
-        <div *ngIf="data.body[3].length > 0; else C">
-            <div *ngFor="let item of data.body[3]">
-                <img src="{{S3name + item.idUsuario + '/' + item.imagen}}" alt="Item" width="100" height="100">
+        <div *ngIf="data.body !== undefined">
+            <h3><b>Calzado - Tienes {{data.body[3].length}} recomendación(es)</b></h3>
+            <div *ngIf="data.body[3].length > 0; else C">
+                <carousel [images]="imagesC" [height]="300" [width]="200"></carousel><br>
             </div>
+            <ng-template #C><h4>No hay calzado</h4><br></ng-template>
         </div>
-        <ng-template #C>No hay calzado</ng-template>
-    </div>
     </div>
     <ng-template #NE>{{data.body}}</ng-template>
 </mat-dialog-content>

@@ -4,6 +4,7 @@ import { AppComponent } from "./app.component";
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatDialogModule } from '@angular/material/dialog';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 import { AmplifyUIAngularModule } from "@aws-amplify/ui-angular";
 import Amplify from "aws-amplify";
@@ -20,6 +21,7 @@ Amplify.configure(awsConfig);
     BrowserModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    IvyCarouselModule,
     SimpleNotificationsModule.forRoot()
   ],
   entryComponents: [DialogComponent],
