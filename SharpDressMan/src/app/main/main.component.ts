@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { API, Auth, Storage } from 'aws-amplify';
 import { MatDialog } from '@angular/material/dialog';
@@ -35,26 +35,18 @@ export class MainComponent implements OnInit {
     {text:"A fin de año tendremos nuestra graduación por terminar la universidad.", urlAvatar:"https://i.pinimg.com/originals/54/35/8f/54358f662fcaa975582b0be0388befe6.jpg", name:"Jesus Bautista"},
     {text:"Me estoy preparando para ir a la carrera que habrá cerca de mi ciudad.", urlAvatar:"https://i.pinimg.com/originals/58/b8/eb/58b8eb55a97dec538fffb7c4c913000c.jpg", name:"Arturo Saavedra"},
   ];
-  public virtualCloset = [
-    {filter:"design", id:"item-1", href:"#item-1", title:"Prenda", urlImage:"https://sharpdressmand95b3129052c40c582ac6770b4521fa5170224-dev.s3.amazonaws.com/public/us-east-1%3A97efdc5f-a9c7-4247-84b7-c3b114bafad1/Dogs+and+Puppies+-+The+Answers+You+Seek+About+Dogs+Are+Here+-+Dogs+Stuff.jfif"}
-    /*{filter:"photos", id:"item-2", href:"#item-2", title:"3D Bag Mockup", urlImage:"https://sharpdressmand95b3129052c40c582ac6770b4521fa5170224-dev.s3.amazonaws.com/public/us-east-1:97efdc5f-a9c7-4247-84b7-c3b114bafad1/saco.jpg"},
-    {filter:"design", id:"item-3", href:"#item-3", title:"Modern Bag Design", urlImage:"http://exill.dk/demo/codex/template/img/item-3.jpg"},
-    {filter:"brand", id:"item-4", href:"#item-4", title:"Coffee Cup Design", urlImage:"http://exill.dk/demo/codex/template/img/item-4.jpg"},
-    {filter:"brand", id:"item-5", href:"#item-5", title:"T-Shirt Design", urlImage:"http://exill.dk/demo/codex/template/img/item-5.jpg"},
-    {filter:"photos", id:"item-6", href:"#item-6", title:"Packaging Box Mockup", urlImage:"http://exill.dk/demo/codex/template/img/item-6.jpg"}*/
-  ];
+  public virtualCloset = [];
 
-  constructor(
-    private service: NotificationsService,
-    public dialog: MatDialog,
-    ) {  }
+  constructor(private service: NotificationsService, private cdr: ChangeDetectorRef, public dialog: MatDialog) {  }
 
   async ngOnInit() {
     this.userData = await Auth.currentUserInfo();
     API.post('sdmApiTest', '/virtual-closet', {
       body: {userId:this.userData.id}
     }).then(responde => {
-      //console.log(responde.body[0]);
+      console.log(responde.body);
+      this.virtualCloset = responde.body;
+      this.cdr.detectChanges();
     });
     
   }
