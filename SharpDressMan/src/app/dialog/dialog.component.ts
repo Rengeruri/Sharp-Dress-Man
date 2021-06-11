@@ -28,31 +28,26 @@ export class DialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
     for(let j=0; j<this.data.body[0].length; j++){
       this.imagesSS.push({path: this.S3name + this.data.body[0][j].idUsuario + "/" +this.data.body[0][j].imagen});
       if(j > 3){
         break;
       }
-      //console.log(this.imagesSS);
     }
     for(let j=0; j<this.data.body[1].length; j++){
       this.imagesS.push({path: this.S3name + this.data.body[1][j].idUsuario + "/" +this.data.body[1][j].imagen});
-      //console.log(this.imagesS);
       if(j > 3){
         break;
       }
     }
     for(let j=0; j<this.data.body[2].length; j++){
       this.imagesI.push({path: this.S3name + this.data.body[2][j].idUsuario + "/" +this.data.body[2][j].imagen});
-      //console.log(this.imagesI);
       if(j > 3){
         break;
       }
     }
     for(let j=0; j<this.data.body[3].length; j++){
       this.imagesC.push({path: this.S3name + this.data.body[3][j].idUsuario + "/" +this.data.body[3][j].imagen});
-      //console.log(this.imagesC);
       if(j > 3){
         break;
       }

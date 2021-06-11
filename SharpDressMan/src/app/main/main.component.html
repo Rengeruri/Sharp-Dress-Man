@@ -171,9 +171,10 @@
                         <div class="col-12">
                             <ul class="list-inline filter-control" role="group" aria-label="Filter Control">
                                 <li class="list-inline-item tab-active" data-filter="*">Todo</li>
-                                <li class="list-inline-item" data-filter=".Saco">Saco</li>
-                                <li class="list-inline-item" data-filter=".Camisa">Camisa</li>
-                                <li class="list-inline-item" data-filter=".Playera">Playera</li>
+                                <li class="list-inline-item" data-filter=".Superiorexterna">Superior externa</li>
+                                <li class="list-inline-item" data-filter=".Superior">Superior</li>
+                                <li class="list-inline-item" data-filter=".Inferior">Inferior</li>
+                                <li class="list-inline-item" data-filter=".Calzado">Calzado</li>
                             </ul>
                         </div>
                     </div>
@@ -184,7 +185,7 @@
                             <a class="portfolio-item" href="{{item.href}}">
                                 <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="{{item.urlImage}}">
                                     <div class="item-content">
-                                        <h6 class="content-title">{{item.title}}</h6><span class="content-more">Más información</span>
+                                        <h6 class="content-title">{{item.nombre}}</h6><span class="content-more">Más información</span>
                                     </div>
                                 </div>
                             </a>
@@ -194,7 +195,7 @@
                 <!-- Single lightbox-->
                 <div *ngFor="let item of virtualCloset" class="lightbox-wrapper" id="{{item.id}}">
                     <div class="f-basis-100">
-                        <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span>
+                        <div class="lightbox-close" data-modal-close><span id="bottonClose-{{item.id}}" class="close-btn"><span class="btn-line"></span></span>
                         </div>
                     </div>
                     <div class="container">
@@ -213,18 +214,18 @@
                                     </div>
                                     <ul class="list-inline content-info">
                                         <li class="list-inline-item single-info"><span>Formalidad:</span>
-                                            <p>Envato</p>
+                                            <p>{{item.formalidad}}</p>
                                         </li>
                                         <li class="list-inline-item single-info"><span>Ropa:</span>
-                                            <p>Web Design</p>
+                                            <p>{{item.nombre}}</p>
                                         </li>
                                         <li class="list-inline-item single-info"><span>Color:</span>
-                                            <p>12 May, 2019</p>
+                                            <p>{{item.color}}</p>
                                         </li>
                                         <li class="list-inline-item single-info"><span>Categoría:</span>
-                                            <p>HTML5, SCSS, JS</p>
+                                            <p>{{item.tipo}}</p>
                                         </li>
-                                    </ul><button class="btn content-btn button-main button-scheme" href="#0" role="button">Borrar</button>
+                                    </ul><button class="btn content-btn button-main button-scheme" href="#0" role="button" (click)="deleteItem(item)">Borrar</button>
                                 </div>
                             </div>
                         </div>

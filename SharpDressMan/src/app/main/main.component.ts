@@ -3,6 +3,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { API, Auth, Storage } from 'aws-amplify';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-main',
@@ -44,7 +45,6 @@ export class MainComponent implements OnInit {
     API.post('sdmApiTest', '/virtual-closet', {
       body: {userId:this.userData.id}
     }).then(responde => {
-      console.log(responde.body);
       this.virtualCloset = responde.body;
       this.cdr.detectChanges();
     });
@@ -87,14 +87,13 @@ export class MainComponent implements OnInit {
                 API.post('sdmApiTest', '/database', {
                   body: response
                 }).then(responses => {
-                  console.log(responses);
+                  window.location.reload();
                 });
               }
             });
           };
           this.service.success("Carga completa", "Imagen " + (i+1).toString() + " subida con éxito", this.costumNotifi);
         } catch (err) {
-          console.log('Error uploading file: ', err);
           this.service.error("Hubo un error", err, this.costumNotifi);
         }  
       }
@@ -109,7 +108,6 @@ export class MainComponent implements OnInit {
       API.post('sdmApiTest','/text',{
         body: {text:text, userId:this.userData.id}
       }).then(responde => {
-        //console.log(responde);
         this.dialog.open(DialogComponent, {data: responde});
       }).catch(error => {
         this.service.error("Hubo un error", error, this.costumNotifi);
@@ -117,6 +115,20 @@ export class MainComponent implements OnInit {
       this.service.success("Mensaje enviado", "Texto subido con éxito", this.costumNotifi);
     } else {
       this.service.error("Hubo un error", "Falta ingresar texto", this.costumNotifi);
+    }
+  }
+
+  deleteItem(item){
+    try {
+      $("#bottonClose-"+item.id).click();
+      this.service.success("Prenda borrada", "La prenda se ha borrado con éxito", this.costumNotifi);
+      API.post('sdmApiTest', '/deleteclothes', {
+        body: {idPrenda: item.idPrenda}
+      }).then(responde => {
+        window.location.reload();
+      });
+    } catch (err) {
+      this.service.error("Hubo un error", err, this.costumNotifi);
     }
   }
 }

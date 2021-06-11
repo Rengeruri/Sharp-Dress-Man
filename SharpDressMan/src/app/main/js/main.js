@@ -669,7 +669,7 @@
         var flag = 0;
         var checkExist = setInterval(function() {
             if ($(".single-item").length && flag == 0) {
-                console.log("Si hay ropa");
+                // console.log("Si hay ropa");
                 flag = 1;
                 (function() {
                     var grid = $('.portfolio-area .portfolio-grid');

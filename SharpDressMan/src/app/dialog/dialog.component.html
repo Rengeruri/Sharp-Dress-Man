@@ -1,34 +1,38 @@
-<h1>Conjuntos de ropa</h1>
+<h2 class="section-title">Conjuntos de ropa</h2>
 <mat-dialog-content>
     <div *ngIf="data.evento !== 'False'; else NE">
-        <h2>Sugerencia de conjunto generado para {{data.evento}}</h2>
+        <h3 class="section-description">Sugerencia de conjunto generado para {{data.evento}}</h3>
         <div *ngIf="data.body !== undefined">
-            <h3><b>Prenda superior externa - Tienes {{data.body[0].length}} recomendación(es)</b></h3>
+            <h5 class="section-description"><b>Prenda superior externa - Tienes {{data.body[0].length}} recomendación(es)</b></h5>
             <div *ngIf="data.body[0].length > 0; else SS">
                 <carousel [images]="imagesSS" [height]="300" [width]="200"></carousel><br>
             </div>
-            <ng-template #SS><h4>No hay prendas superiores externas</h4><br></ng-template>
+            <ng-template #SS>
+                <h4>No hay prendas superiores externas</h4><br></ng-template>
         </div>
         <div *ngIf="data.body !== undefined">
-            <h3><b>Prenda superior - Tienes {{data.body[1].length}} recomendación(es)</b></h3>
+            <h5 class="section-description"><b>Prenda superior - Tienes {{data.body[1].length}} recomendación(es)</b></h5>
             <div *ngIf="data.body[1].length > 0; else S">
                 <carousel [images]="imagesS" [height]="300" [width]="200"></carousel><br>
             </div>
-            <ng-template #S><h4>No hay prendas superiores</h4><br></ng-template>
+            <ng-template #S>
+                <h4>No hay prendas superiores</h4><br></ng-template>
         </div>
         <div *ngIf="data.body !== undefined">
-            <h3><b>Prenda inferior - Tienes {{data.body[2].length}} recomendación(es)</b></h3>
+            <h5 class="section-description"><b>Prenda inferior - Tienes {{data.body[2].length}} recomendación(es)</b></h5>
             <div *ngIf="data.body[2].length > 0; else I">
                 <carousel [images]="imagesI" [height]="300" [width]="200"></carousel><br>
             </div>
-            <ng-template #I><h4>No hay prendas inferiores</h4><br></ng-template>
+            <ng-template #I>
+                <h4>No hay prendas inferiores</h4><br></ng-template>
         </div>
         <div *ngIf="data.body !== undefined">
-            <h3><b>Calzado - Tienes {{data.body[3].length}} recomendación(es)</b></h3>
+            <h5 class="section-description"><b>Calzado - Tienes {{data.body[3].length}} recomendación(es)</b></h5>
             <div *ngIf="data.body[3].length > 0; else C">
                 <carousel [images]="imagesC" [height]="300" [width]="200"></carousel><br>
             </div>
-            <ng-template #C><h4>No hay calzado</h4><br></ng-template>
+            <ng-template #C>
+                <h4>No hay calzado</h4><br></ng-template>
         </div>
     </div>
     <ng-template #NE>{{data.body}}</ng-template>
